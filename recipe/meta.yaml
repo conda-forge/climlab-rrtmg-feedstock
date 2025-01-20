@@ -25,7 +25,7 @@ requirements:
   host:
     - libpython  # [win]
     - python
-    - setuptools<60
+    - setuptools <60
     - pip
     - numpy
   run:
