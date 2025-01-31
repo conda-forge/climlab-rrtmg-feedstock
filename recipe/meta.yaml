@@ -1,4 +1,4 @@
-{% set version = "0.3" %}
+{% set version = "0.4" %}
 
 package:
   name: climlab-rrtmg
@@ -6,31 +6,32 @@ package:
 
 source:
   url: https://github.com/climlab/climlab-rrtmg/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5e9fb4b7da2efb1eefe74b61060998b9e41948ad3a72f0053f748df208bf6079
+  sha256: 4aae325ec6c93ccafff1695dc23036ea14e3f389dd1a502488865359e0e3c7cc
 
 build:
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: true  # [py>311]
-  number: 1
+  skip: true  # [win]  
+  number: 0
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
+    - ninja
+    - pkg-config
     - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
-    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ compiler('c') }}
   host:
-    - libpython  # [win]
+    - meson-python
     - python
-    - setuptools <60
+    - python-build
     - pip
     - numpy
+    - packaging >=20.0
   run:
     - python
-    - numpy <2
+    - numpy
 
 test:
   requires:
