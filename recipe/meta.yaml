@@ -1,4 +1,4 @@
-{% set version = "0.4" %}
+{% set version = "0.4.1" %}
 
 package:
   name: climlab-rrtmg
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://github.com/climlab/climlab-rrtmg/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 4aae325ec6c93ccafff1695dc23036ea14e3f389dd1a502488865359e0e3c7cc
+  sha256: afce23912ac849077a9c92eff7c9fc139155a56d7a2d597219cdf5984247d20b
 
 build:
   skip: true  # [win]  
-  number: 1
+  number: 0
 
 requirements:
   build:
